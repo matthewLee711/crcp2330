@@ -15,4 +15,13 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    
+    //if sel = 0, output a
+    Not(in=sel, out=notSel);
+    And(a=a, b=notSel, out=outAIfSelZero);
+    
+    //if sel not = 0, output b
+    And(a=sel, b=b, out=outB);
+    Or(a=outAIfSelZero, b=outB, out=out);
+
 }
