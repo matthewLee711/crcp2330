@@ -15,4 +15,8 @@ CHIP Bit {
 
     PARTS:
     // Put your code here:
+    //Page 43 for diagram
+	Mux(a = dffOut, b = in, sel = load, out = dffIn);
+    DFF(in = dffIn, out = out, out = dffOut);
+
 }
