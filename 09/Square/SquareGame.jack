@@ -22,7 +22,7 @@ class SquareGame {
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
-        let square = Square.new(0, 0, 30);
+        let square = Square.new(0, 0, 30);//starting location
         let direction = 0;
 
         return this;
@@ -49,6 +49,8 @@ class SquareGame {
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }
+            
+            //conditional to wait for user input
 
             if (key = 81) {
                 let exit = true;
@@ -97,7 +99,7 @@ class SquareGame {
             do square.moveRight();
         }
 
-        do Sys.wait(5); // Delays the next movement.
+        //do Sys.wait(5); // Delays the next movement.
         return;
     }
 }
