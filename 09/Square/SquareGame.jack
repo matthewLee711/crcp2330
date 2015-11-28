@@ -16,6 +16,8 @@ class SquareGame {
 
     // The square
     field Square square;
+    //Rain
+    field Rain rain;
 
     // The square's movement direction
     field int direction; // 0=none,1=up,2=down,3=left,4=right
@@ -52,8 +54,10 @@ class SquareGame {
             
             //conditional to wait for user input
 
+            //quits game
             if (key = 81) {
                 let exit = true;
+                //let rain.stop = false;//end rain if game quit
             }
             if (key = 90) {
                 do square.decSize();
@@ -99,7 +103,7 @@ class SquareGame {
             do square.moveRight();
         }
 
-        //do Sys.wait(5); // Delays the next movement.
+        do Sys.wait(5); // Delays the next movement.
         return;
     }
 }

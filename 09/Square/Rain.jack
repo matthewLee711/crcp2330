@@ -1,0 +1,57 @@
+class Rain
+{
+	// Location on the screen
+    field int x, y;
+
+    // The size of the square
+    field int size;
+
+    constructor Rain new() {
+ 		let size = 10;
+ 		let x = 20;
+ 		let y = 20;
+
+ 		return this;
+ 	}
+
+ 	//Functions of rain
+ 	
+ 	//Randomly place rain
+ 	method void randomPosition() {
+ 		//create counter for rain
+ 		var int counter;
+ 		var boolean stop;
+
+ 		let counter = 0;
+		let stop = false;
+ 		//create bool stop for while loop
+ 		
+ 		
+
+ 		//While loop which places rain
+ 		while(~stop)
+ 		{
+ 			//create rain object
+
+ 			//call function which will calculate rain position
+
+ 			let counter = counter + 1;
+ 			//if counter reaches 10, stop creating additional rain
+ 			if (counter = 10)
+ 			{
+ 				let stop = true;
+ 			}
+
+
+ 			//debug test
+ 			
+
+ 		}//end of while loop
+
+ 		do Output.printInt(5);
+
+ 		return;
+ 	}//end of randomPosition
+
+
+}
