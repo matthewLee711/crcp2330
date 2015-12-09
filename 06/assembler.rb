@@ -1,22 +1,22 @@
 #! usr/bin/env ruby
 
+require_relative 'parser'
+
 class Assembler
   #instantiate assembler
   def initialize(asm_file, hack_file)
     #create member variables 
     @asm_file = asm_file
     @hack_file = hack_file
-    #create array which will store instructions
-    @asm_instructions = instructions_from_file
-    p @asm_instructions
     #instantiate parser object and pass it array
-    @parser = Parser.new(@asm_instructions)
+    @parser = Parser.new(instructions_from_file)
   end
+  
   #Function which prints out file contents
   def assemble!
     #hack_instructions = @parser.parse_asm
     #@hack_file << hack_instructions
-  end
+  end# of assemble
 
   #Function which extracts info ands stores in array
   def instructions_from_file
@@ -28,8 +28,8 @@ class Assembler
     lines.each { |line| line.gsub! /\/\/*/, ''; line.strip! }
     #delete all lines with empty string
     lines.delete("")
-    return line #return line specifically
-  end
+    return lines #return line specifically
+  end# of function
 
 end# of Assembler class
 
