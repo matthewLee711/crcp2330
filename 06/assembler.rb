@@ -6,13 +6,32 @@ class Assembler
     #create member variables 
     @asm_file = asm_file
     @hack_file = hack_file
+    #create array which will store instructions
+    @asm_instructions = instructions_from_file
+    p @asm_instructions
+    #instantiate parser object and pass it array
+    @parser = Parser.new(@asm_instructions)
   end
   #Function which prints out file contents
   def assemble!
-    puts @asm_file.read
+    #hack_instructions = @parser.parse_asm
+    #@hack_file << hack_instructions
   end
 
-end
+  #Function which extracts info ands stores in array
+  def instructions_from_file
+    #lines stores text into an array
+    lines = @asm_file.readlines
+    #iterator, for each element in "line" array,
+    #replace lines that start with "//" in place of ''
+    #remove return keys
+    lines.each { |line| line.gsub! /\/\/*/, ''; line.strip! }
+    #delete all lines with empty string
+    lines.delete("")
+    return line #return line specifically
+  end
+
+end# of Assembler class
 
 #Function tests if argument being passed is valid
 def args_valid?
