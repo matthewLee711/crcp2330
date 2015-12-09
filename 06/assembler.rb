@@ -12,10 +12,10 @@ class Assembler
     @parser = Parser.new(instructions_from_file)
   end
   
-  #Function which prints out file contents
+  #Function which performs assembler 
   def assemble!
-    #hack_instructions = @parser.parse_asm
-    #@hack_file << hack_instructions
+    #write each instruction to hack file
+    @parser.parse.each {|instruction| @hack_file << instruction << "\n" }
   end# of assemble
 
   #Function which extracts info ands stores in array
@@ -25,7 +25,7 @@ class Assembler
     #iterator, for each element in "line" array,
     #replace lines that start with "//" in place of ''
     #remove return keys
-    lines.each { |line| line.gsub! /\/\/*/, ''; line.strip! }
+    lines.each { |line| line.gsub! /\/\/.*/, ''; line.strip! }
     #delete all lines with empty string
     lines.delete("")
     return lines #return line specifically
@@ -33,6 +33,7 @@ class Assembler
 
 end# of Assembler class
 
+#MAIN
 #Function tests if argument being passed is valid
 def args_valid?
   ARGV[0] && ARGV[0].end_with?(".asm") && ARGV.length == 1
