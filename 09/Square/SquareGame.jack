@@ -56,12 +56,7 @@ class SquareGame {
             // waits for a key to be pressed.
             while (key = 0) {
                 //Place dots on the screen
-                let counter = counter + 1;
-                if (counter < 23) {
-                    
-                }
                 do rain.move();
-                //do rain.move2();
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }

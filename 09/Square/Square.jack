@@ -27,6 +27,11 @@ class Square {
         return this;
     }
 
+    method int location() {
+
+        return x;
+    }
+
     /** Deallocates the object's memory. */
     method void dispose() {
         do Memory.deAlloc(this);

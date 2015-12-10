@@ -1,9 +1,11 @@
 class Rain
 {
+    //the square
+    field Square square;
 	// Location on the screen
     field int x, y;
-    field int a, b;
     field int loc, down;
+    field int refresh;
 
     // The size of the square
     field int size;
@@ -11,13 +13,10 @@ class Rain
     //Call constructor to build a circle
     constructor Rain new() {
  		//Function draw uses these
-        let size = 10;
+        let size = 20;
  		let x = 10;//left and right
  		let y = 20;//up and down
-        let a = 10;
-        let b = 20;
-        let loc = 0;
-        let down = 0;
+        let refresh = 0;
 
  		do draw();
 
@@ -61,7 +60,7 @@ class Rain
  		return;
  	}//end of randomPosition
 
- 	//Draws crushing mechanism
+ 	//Draws rain
  	method void draw() {
         do Screen.setColor(true);
         do Screen.drawCircle(x + loc, y + down, 10);
@@ -78,7 +77,7 @@ class Rain
     method void move() {
         //change these to arrays later
         if((y + size) < 254) {
-            //rain 1
+            //rain
             do Screen.setColor(false);
             do Screen.drawCircle(x, y, 10);
             let y = y + 1;
@@ -87,13 +86,22 @@ class Rain
         }
         //reset rain for y axis
         if((y + size) = 254) {
-            let y = 20;
-            let x = x + 40;
-            do Screen.clearScreen();
+            do Screen.setColor(false);
+            let refresh = refresh + 1;
+            if (refresh < 16)
+            {
+                let y = 20;
+                let x = x + 40;
+                do Screen.clearScreen();
+            }
         }
         //reset rain for x axis
         if(x > 480) {
             let x = 10;
+        }
+        if(refresh = 16){
+            do Screen.clearScreen();
+            do Output.printString("Winner!");
         }
         return;
     }
