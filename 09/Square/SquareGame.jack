@@ -48,6 +48,7 @@ class SquareGame {
 
         //RAIN
         do rain.move();
+        do rain.place();
 
         let exit = false;
 

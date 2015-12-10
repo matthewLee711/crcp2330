@@ -76,6 +76,18 @@ class Rain
         var boolean stop;
         let stop = false;
         
+        //while(~stop)
+        //{
+            //change these to arrays later
+        //    do Screen.setColor(false);
+        //    do Screen.drawCircle(x, y, 10);
+        //    let y = y + 2;
+        //    do Screen.setColor(true);
+        //    do Screen.drawCircle(x, (y + size) - 1, 10);
+            //stop rain
+        //    if ((y + size) < 254)
+        //        let stop = true;
+        //}
 
         return;
     }
@@ -84,11 +96,11 @@ class Rain
     	var boolean stop;
         let stop = false;
 
-    	while(~stop)
-    	{
-
-    	}
-
+        let loc = loc + 20;
+        //draw another circle on screen
+        do Screen.setColor(true);
+        do Screen.drawCircle(x + loc, y + down, 10);
+        
     	return;
     }
 
