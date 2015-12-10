@@ -13,7 +13,6 @@
  * The 'q' key is used to quit the game.
  */
 class SquareGame {
-
     // The square
     field Square square;
     //Rain
@@ -21,11 +20,13 @@ class SquareGame {
 
     // The square's movement direction
     field int direction; // 0=none,1=up,2=down,3=left,4=right
+    field int counter;
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
         let square = Square.new(241, 225, 30);//starting location x, y
         let direction = 0;
+        let counter = 0;
 
         //create rain object
         let rain = Rain.new();
@@ -45,16 +46,33 @@ class SquareGame {
     method void run() {
         var char key;
         var boolean exit;
+        var boolean stop;
+        let stop = false;
+
+        //while (~stop)
+        //{
+        //    let counter = counter + 1;
+        //    if (counter = 81) {
+        //        stop = true;
+        //    }
+        //    do rain.place();
+        //}
+            
 
         //RAIN
-        do rain.move();
-        do rain.place();
-
+        
         let exit = false;
 
         while (~exit) {
             // waits for a key to be pressed.
             while (key = 0) {
+                //Place dots on the screen
+                let counter = counter + 1;
+                if (counter < 23) {
+                    do rain.place();
+                }
+                do Output.printString("Get across the screen!");
+
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }
@@ -78,11 +96,11 @@ class SquareGame {
             }
             //up
             if (key = 131) {
-                //let direction = 1;
+                let direction = 1;
             }
             //down
             if (key = 133) {
-                //let direction = 2;
+                let direction = 2;
             }
             //left
             if (key = 130) {

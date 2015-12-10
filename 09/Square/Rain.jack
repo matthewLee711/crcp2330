@@ -101,6 +101,7 @@ class Rain
         do Screen.setColor(true);
         do Screen.drawCircle(x + loc, y + down, 10);
         
+        
     	return;
     }
 
