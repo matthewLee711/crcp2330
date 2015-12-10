@@ -15,14 +15,17 @@ class Parser
   	  	@machine_instructions << assemble_a_command(instruction)
   	  elsif command_type(instruction) == :c_command
   	  	@machine_instructions << assemble_c_command(instruction)
-  	  else
+  	  elsif command_type(instruction) == :l_command
   	  	@machine_instructions << assemble_l_command(instruction)
+  	  #if it is a full on label, insert nil
+  	  else
+  	  	@machine_instructions << nil
   	  end
   	end
   	@machine_instructions
   end# of parse
 
-  #function which assembles A instructions
+  #function which assembles A instructions and inserts
   def assemble_a_command(instruction)
   	command = "0"
   	command << constant(instruction[1..-1])
@@ -33,7 +36,7 @@ class Parser
   end
   
   #dest=comp;jump
-  #function which assembles C instructions and prints binary
+  #function which assembles C instructions and inserts binary
   def assemble_c_command(instruction)
     if instruction[1] == ';'
       return "111" + @codex.comp(nil) + @codex.dest(instruction.split('=').first) + @codex.jump(instruction.split(';')[-1])
@@ -44,11 +47,12 @@ class Parser
     #{}"1110000000000000"
   end# of c_command
 
+  #function which assembles label instructions and inserts binary
   def assembler_l_command(instruction)
   end
 
 
-  #function which returns symbolic ruby for A,C or L instr.
+  #function which returns symbolic ruby for A, C or L instr.
   def command_type(instruction)
   	if instruction.start_with?("@") && instruction[1].is_a? Integer
   	  :a_command
