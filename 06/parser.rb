@@ -1,5 +1,11 @@
 require_relative 'code'
 
+class String
+  def is_integer?
+    self.to_i.to_s == self
+  end
+end
+
 class Parser
   
   def initialize(assembly_instructions)
@@ -44,7 +50,6 @@ class Parser
     	#p "dest: #{instruction.split('=').first} " + "comp: #{instruction.split('=')[-1]} " + "jump: #{nil}"
       return "111" + @codex.comp(instruction.split('=')[-1]) + @codex.dest(instruction.split('=').first) + @codex.jump(nil)
     end
-    #{}"1110000000000000"
   end# of c_command
 
   #function which assembles label instructions and inserts binary
@@ -54,9 +59,9 @@ class Parser
 
   #function which returns symbolic ruby for A, C or L instr.
   def command_type(instruction)
-  	if instruction.start_with?("@") && instruction[1].is_a? Integer
+  	if instruction.start_with?("@") && instruction[1].is_integer?
   	  :a_command
-  	elsif instruction.start_with?("@") && instruction[1].is_a? String
+  	elsif instruction.start_with?("@") && !instruction[1].is_integer?
   	  :l_command
   	else
   	  :c_command
