@@ -14,7 +14,7 @@ class Assembler
   
   #Function which performs assembler 
   def assemble!
-    #write each instruction to hack file
+    #write each binary instruction to hack file
     @parser.parse.each {|instruction| @hack_file << instruction << "\n" }
   end# of assemble
 
