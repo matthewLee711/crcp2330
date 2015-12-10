@@ -24,8 +24,11 @@ class SquareGame {
 
     /** Constructs a new Square Game. */
     constructor SquareGame new() {
-        let square = Square.new(0, 0, 30);//starting location
+        let square = Square.new(241, 225, 30);//starting location x, y
         let direction = 0;
+
+        //create rain object
+        let rain = Rain.new();
 
         return this;
     }
@@ -43,6 +46,9 @@ class SquareGame {
         var char key;
         var boolean exit;
 
+        //RAIN
+        do rain.move();
+
         let exit = false;
 
         while (~exit) {
@@ -51,7 +57,11 @@ class SquareGame {
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }
+
+            //keep spawning circles and deallocate
             
+            //once user touches circle, end game
+
             //conditional to wait for user input
 
             //quits game
@@ -60,20 +70,24 @@ class SquareGame {
                 //let rain.stop = false;//end rain if game quit
             }
             if (key = 90) {
-                do square.decSize();
+                //do square.decSize();
             }
             if (key = 88) {
-                do square.incSize();
+                //do square.incSize();
             }
+            //up
             if (key = 131) {
-                let direction = 1;
+                //let direction = 1;
             }
+            //down
             if (key = 133) {
-                let direction = 2;
+                //let direction = 2;
             }
+            //left
             if (key = 130) {
                 let direction = 3;
             }
+            //right
             if (key = 132) {
                 let direction = 4;
             }

@@ -2,14 +2,21 @@ class Rain
 {
 	// Location on the screen
     field int x, y;
+    field int loc, down;
 
     // The size of the square
     field int size;
 
+    //Call constructor to build a circle
     constructor Rain new() {
- 		let size = 10;
- 		let x = 20;
- 		let y = 20;
+ 		//Function draw uses these
+        let size = 10;
+ 		let x = 10;//left and right
+ 		let y = 20;//up and down
+        let loc = 0;
+        let down = 0;
+
+ 		do draw();
 
  		return this;
  	}
@@ -25,8 +32,6 @@ class Rain
  		let counter = 0;
 		let stop = false;
  		//create bool stop for while loop
- 		
- 		
 
  		//While loop which places rain
  		while(~stop)
@@ -52,6 +57,40 @@ class Rain
 
  		return;
  	}//end of randomPosition
+
+ 	//Draws crushing mechanism
+ 	method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawCircle(x + loc, y + down, 10);
+        return;
+    }
+
+    /** Deallocates the object's memory. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    //moves circle
+    method void move() {
+        var boolean stop;
+        let stop = false;
+        
+
+        return;
+    }
+
+    method void place() {
+    	var boolean stop;
+        let stop = false;
+
+    	while(~stop)
+    	{
+
+    	}
+
+    	return;
+    }
 
 
 }
