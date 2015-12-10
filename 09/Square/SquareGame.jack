@@ -48,17 +48,6 @@ class SquareGame {
         var boolean exit;
         var boolean stop;
         let stop = false;
-
-        //while (~stop)
-        //{
-        //    let counter = counter + 1;
-        //    if (counter = 81) {
-        //        stop = true;
-        //    }
-        //    do rain.place();
-        //}
-            
-
         //RAIN
         
         let exit = false;
@@ -69,10 +58,10 @@ class SquareGame {
                 //Place dots on the screen
                 let counter = counter + 1;
                 if (counter < 23) {
-                    do rain.place();
+                    
                 }
-                do Output.printString("Get across the screen!");
-
+                do rain.move();
+                //do rain.move2();
                 let key = Keyboard.keyPressed();
                 do moveSquare();
             }
